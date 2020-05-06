@@ -22,15 +22,18 @@ namespace tds {
         string_constant
     };
     enum struct kind {
-        static_, arg, var, none
+        static_, field, arg, var, none
     };
     enum struct segment {
         const_, arg, local, static_, this_,
-        that, pointer, temp
+        that, pointer, temp, none
     };
     enum struct command {
         add, sub, neg, eq, gt, lt,
-        and_, or_, not_
+        and_, or_, not_, mul, div
+    };
+    enum struct identifier_type {
+        static_, field, arg, var, class_, subroutine, let, none
     };
     struct token {
         token_type type;

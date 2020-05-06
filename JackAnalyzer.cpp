@@ -71,13 +71,13 @@ int main(int argc, char* argv[]) {
         for(const auto& file: fs::directory_iterator(argv[1])){
             auto file_name = file.path().string();
             if (file_name.substr(file_name.find("."),file_name.length()) == (".jack")) {
-            
+                
                 lexer lex{ file.path().string() };
                 run(lex);
                 auto parser_output = lex.output_path().substr(0,lex.output_path().find("T.")) + ".xml";
                 compilation_engine parser{lex.output_path(), parser_output};
                 parser.compile_class();
-            
+                parser.debug_print();
             }
         }
     }
